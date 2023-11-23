@@ -12,8 +12,8 @@ import org.golde.plu.aifinal.ai.ResponseGenerator;
 
 public class LLamaCPPResponseGenerator implements ResponseGenerator {
 
-    private static final String EXE_LOCATION = "\"C:\\Users\\eric\\Documents\\PLU\\Year 5\\AI\\llama.cpp2\\main.exe\"";
-    private static final File MODEL_LOCATION = new File("C:\\Users\\eric\\Documents\\PLU\\Year 5\\AI\\llama.cpp\\models");
+    private static final String EXE_LOCATION;
+    private static final File MODEL_LOCATION;
 
     private static final String MODEL_FILE_NAME = "ggml-model-q4_0.gguf";
 
@@ -36,6 +36,17 @@ public class LLamaCPPResponseGenerator implements ResponseGenerator {
 
             ;
 
+    static {
+        final String dir = System.getProperty("user.dir");
+        System.out.println("current dir = " + dir);
+        EXE_LOCATION = "\"" + dir + "\\llama.cpp\\main.exe\"";
+
+        MODEL_LOCATION = new File(dir, "llama.cpp\\models");
+
+        System.out.println("EXE_LOCATION = " + EXE_LOCATION);
+        System.out.println("MODEL_LOCATION = " + MODEL_LOCATION.getAbsolutePath());
+    }
+
     private final File TMP_FILE = new File("tmp/llama_prompt.txt");
 
     private final AISettings SETTINGS = new AISettings()
@@ -53,16 +64,7 @@ public class LLamaCPPResponseGenerator implements ResponseGenerator {
     private boolean llamaThreadIsRunning = false;
 
     public LLamaCPPResponseGenerator(String modelFolder) {
-
         this.MODEL_NAME = modelFolder;
-
-//        File theModel = new File(MODEL_LOCATION, modelFolder + "\\" + MODEL_FILE_NAME);
-//        if(!theModel.exists()) {
-//            throw new RuntimeException("Model does not exist!");
-//        }
-//
-//        EXACT_MODEL_LOCATION = theModel.getAbsolutePath();
-
     }
 
     @Override
