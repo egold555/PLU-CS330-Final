@@ -37,7 +37,7 @@ public class GPTResponseGenerator implements ResponseGenerator {
 
     private final AISettings SETTINGS = new AISettings()
             .addDouble("Temperature", 1, 0d, 2d, 0.1);
-    
+
     static {
         File apiKeyFile = new File("llama.cpp/models/GPT/api_key.txt");
         if(apiKeyFile.exists()) {
