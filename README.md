@@ -46,7 +46,7 @@ This project takes a lot of disk space, and can be a pain to get to compile prop
 ### Installing
 1. Clone this repo
 2. In the llama.cpp folder:
-    1. Clone [the repo](https://github.com/ggerganov/llama.cpp)
+    1. Clone [the repo](https://github.com/ggerganov/llama.cpp/tree/b1483)
     2. Build it following the build instructions on the repo (Don't forget to enable GPU!)
 3. In the models folder:
     1. Clone [all the models you want to use](#downloading-the-models)
