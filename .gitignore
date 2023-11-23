@@ -16,8 +16,13 @@ out/
 tmp/*
 !tmp/.gitkeep
 
+# ignore llama log file
+main.log
+
 # Ignore all files in llama.cpp/ except for llama.cpp/models/
+# We don't want to commit the actual model files though.
 !/llama.cpp/
 /llama.cpp/*
-!llama.cpp/models/
+!llama.cpp/models/GPT/api_key.txt
+!llama.cpp/models/*.gitkeep
 
