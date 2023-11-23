@@ -11,7 +11,10 @@ out/
 .DS_Store
 
 ### Eric's stuff ###
-/tmp/
+
+# Ignore everything in tmp directory except for .gitkeep
+tmp/*
+!tmp/.gitkeep
 
 # Ignore all files in llama.cpp/ except for llama.cpp/models/
 !/llama.cpp/
