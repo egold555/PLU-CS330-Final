@@ -12,3 +12,9 @@ out/
 
 ### Eric's stuff ###
 /tmp/
+
+# Ignore all files in llama.cpp/ except for llama.cpp/models/
+!/llama.cpp/
+/llama.cpp/*
+!llama.cpp/models/
+
