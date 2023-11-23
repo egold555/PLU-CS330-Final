@@ -1,0 +1,172 @@
+package org.golde.plu.aifinal.ai.models.llama;
+
+import com.google.gson.JsonObject;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import javax.swing.SwingUtilities;
+import org.golde.plu.aifinal.ai.AISettings;
+import org.golde.plu.aifinal.ai.ResponseGenerator;
+
+public class LLamaCPPResponseGenerator implements ResponseGenerator {
+
+    private static final String EXE_LOCATION = "\"C:\\Users\\eric\\Documents\\PLU\\Year 5\\AI\\llama.cpp2\\main.exe\"";
+    private static final File MODEL_LOCATION = new File("C:\\Users\\eric\\Documents\\PLU\\Year 5\\AI\\llama.cpp\\models");
+
+    private static final String MODEL_FILE_NAME = "ggml-model-q4_0.gguf";
+
+    private final String MODEL_NAME;
+
+    private final String THE_PROMPT = "Transcript of a dialog, where the User interacts with an Assistant named Bob. Bob is helpful, kind, honest, good at writing, and never fails to answer the User's requests immediately and with precision.\n" +
+            "\n" +
+            "User: Hello, Bob.\n" +
+            "Bob: Hello. How may I help you today?\n" +
+            "\n" +
+            "User: I will give you two different product descriptions. Please tell me the difference between the two products as accurately as you can, without making anything up. I would like the differences to include a bullet point list per product, and a summary of the sifferences between the two products.\n" +
+            "\n" +
+            "**Product 1**\n" +
+            "%product1%\n" +
+            "\n" +
+            "**Product 2**\n" +
+            "%product2%\n" +
+            "\n" +
+            "Bob: "
+
+            ;
+
+    private final File TMP_FILE = new File("tmp/llama_prompt.txt");
+
+    private final AISettings SETTINGS = new AISettings()
+            .addInteger("Max Words (N)", -1)
+            .addDouble("Repeat Penalty", 1.0, 0.0, 5.0, 0.1)
+            .addDouble("Temperature", 0.7, 0.0, 5.0, 0.1)
+            .addInteger("Gpu Layers", 43)
+            .addInteger("mirostat", 1)
+            .addInteger("mirostat-ent", 4)
+            .addDouble("mirostat-lr", 0.2, 0.0, 5.0, 0.1)
+            .addInteger("repeat-last-n", 1600)
+            ;
+
+    private Process llamaCPP;
+    private boolean llamaThreadIsRunning = false;
+
+    public LLamaCPPResponseGenerator(String modelFolder) {
+
+        this.MODEL_NAME = modelFolder;
+
+//        File theModel = new File(MODEL_LOCATION, modelFolder + "\\" + MODEL_FILE_NAME);
+//        if(!theModel.exists()) {
+//            throw new RuntimeException("Model does not exist!");
+//        }
+//
+//        EXACT_MODEL_LOCATION = theModel.getAbsolutePath();
+
+    }
+
+    @Override
+    public void generateResponse(String product1, String product2, AsyncCallback<String> callback) {
+
+        try {
+
+            //Write the prompt to a file
+            String prompt = THE_PROMPT.replace("%product1%", product1).replace("%product2%", product2);
+            PrintWriter pw = new PrintWriter(TMP_FILE);
+            pw.write(prompt);
+            pw.flush();
+            pw.close();
+
+            //main.exe -m ../llama.cpp/models/wizard-mega-13b/ggml-model-q4_0.gguf -n -1 -c 4096 --repeat_penalty 1.0 --gpu-layers 100 --color -f ../llama.cpp/prompts/eg-hd-4.txt
+
+            String cmd = EXE_LOCATION +
+                    " -m \"" + MODEL_LOCATION + "/" + MODEL_NAME + "/" + MODEL_FILE_NAME + "\" " +
+                    "-n -1 -c 4096 --repeat_penalty 1.0 --gpu-layers 100 --color -f \"" + TMP_FILE.getAbsolutePath() + "\""
+                    ;
+
+            ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "\"" + cmd + "\"");
+            pb.redirectErrorStream(true);
+
+
+
+            System.out.println("Running: " + cmd);
+
+            llamaCPP = pb.start();
+            BufferedReader stdInput = new BufferedReader(new
+                    InputStreamReader(llamaCPP.getInputStream()));
+
+            BufferedReader stdError = new BufferedReader(new
+                    InputStreamReader(llamaCPP.getErrorStream()));
+
+            llamaThreadIsRunning = true;
+
+            new Thread(() -> {
+
+                System.out.println("> Starting LLaMa output thread");
+                callback.onSuccess("> Starting LLaMa output thread");
+
+                while(llamaThreadIsRunning) {
+                    try {
+                        String line = null;
+                        while ((line = stdInput.readLine()) != null) {
+                            System.out.println(line);
+
+                            //shove back to the UI thread
+                            final String finalLine = line;
+                            SwingUtilities.invokeLater(new Runnable() {
+                                public void run() {
+                                    callback.onSuccess(finalLine);
+                                }
+                            });
+
+                        }
+
+                        while ((line = stdError.readLine()) != null) {
+                            System.err.println(line);
+                            final String finalLine = line;
+                            SwingUtilities.invokeLater(new Runnable() {
+                                public void run() {
+                                    callback.onFailure(finalLine);
+                                }
+                            });
+                        }
+
+                        Thread.sleep(10);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                callback.onSuccess("> Process Finished!");
+            }, "LLama output thread").start();
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            callback.onFailure(e.getMessage());
+        }
+
+    }
+
+    @Override
+    public void shutdown(AsyncCallback<Void> callback) {
+
+        llamaThreadIsRunning = false;
+
+        if(llamaCPP != null) {
+            llamaCPP.destroy();
+            callback.onSuccess(null);
+        }
+        else {
+            callback.onFailure("Llama is not running!");
+        }
+
+
+    }
+
+    @Override
+    public AISettings getSettings() {
+        return SETTINGS;
+       // return new AISettings().addBoolean("NOT IMPLEMENTED", true);
+    }
+
+}
