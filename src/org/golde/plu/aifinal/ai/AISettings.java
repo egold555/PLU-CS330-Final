@@ -63,6 +63,15 @@ public class AISettings {
         return sb.toString();
     }
 
+    public Setting getSettingByName(String name) {
+    	for(Setting setting : settings) {
+    		if(setting.getName().equals(name)) {
+    			return setting;
+    		}
+    	}
+    	return null;
+    }
+
     @Getter
     public static class Setting<T> implements JsonSerializer<Setting>, JsonDeserializer<Setting> {
 
