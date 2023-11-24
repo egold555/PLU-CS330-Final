@@ -1,7 +1,7 @@
 # CS330 Homedepot AI Final Project
-*Description of the project goes here*
+This program uses a variety of AI models to compare two products on homedepot.com. It then gives a summary of the products. It has options to use a variety of models, and to change the settings of each model.
 
-**This project is only built for Windows at the moment!**
+**:warning: This project is only built for Windows, and will not run on other platforms!**
 
 ## Table of Contents
 - [CS330 Homedepot AI Final Project](#cs330-homedepot-ai-final-project)
@@ -33,17 +33,16 @@
 
 ## Example Videos
 This project takes a lot of disk space, and can be a pain to get to compile properly. These videos are provided to showcase how the project works for each of the given models for convenience.
-| Model Name    | Example Video                                                                                                                               |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| GPT 3.5 Turbo | [![GPT 3.5 Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FEVEnqtYl0vY)](https://youtu.be/EVEnqtYl0vY)    |
-| GPT 4         | [![GPT 4 Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FN0SuDh7I9uM)](https://youtu.be/N0SuDh7I9uM)      |
-| LLAMA 7B      | [![LLAMA 7b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FsvyEbFeL6C0)](https://youtu.be/svyEbFeL6C0)   |
-| LLAMA 13B     | [![LLAMA 13b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FWrUIHKu7LLc)](https://youtu.be/WrUIHKu7LLc)  |
-| Wizard 13B    | [![Wizard 13b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FWrUIHKu7LLc)](https://youtu.be/WrUIHKu7LLc) |
-| Orca 2 7B     | [![Orca 2 7b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FcCSpiXtpkEE)](https://youtu.be/cCSpiXtpkEE)  |
-| Orca 2 13B    | [![Orca 2 13b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FFvGlrgcHDdA)](https://youtu.be/FvGlrgcHDdA) |
-| Openhermes 2.5 mistral 7b   | [![Openhermes 2.5 mistral 7b](https://markdown-videos-api.jorgenkh.no/url?url=TBA)](TBA) |
-
+| Model Name                | Example Video                                                                                                                                      |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GPT 3.5 Turbo             | [![GPT 3.5 Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FEVEnqtYl0vY)](https://youtu.be/EVEnqtYl0vY)           |
+| GPT 4                     | [![GPT 4 Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FN0SuDh7I9uM)](https://youtu.be/N0SuDh7I9uM)             |
+| LLAMA 7B                  | [![LLAMA 7b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FsvyEbFeL6C0)](https://youtu.be/svyEbFeL6C0)          |
+| LLAMA 13B                 | [![LLAMA 13b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FWrUIHKu7LLc)](https://youtu.be/WrUIHKu7LLc)         |
+| Wizard 13B                | [![Wizard 13b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FWrUIHKu7LLc)](https://youtu.be/WrUIHKu7LLc)        |
+| Orca 2 7B                 | [![Orca 2 7b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FcCSpiXtpkEE)](https://youtu.be/cCSpiXtpkEE)         |
+| Orca 2 13B                | [![Orca 2 13b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FFvGlrgcHDdA)](https://youtu.be/FvGlrgcHDdA)        |
+| Openhermes 2.5 mistral 7b | [![Openhermes 2.5 mistral 7b](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2Fu5XgjZUrYv4)](https://youtu.be/u5XgjZUrYv4) |
 
 ## Installing & Running
 ### Installing
@@ -71,7 +70,7 @@ This project takes a lot of disk space, and can be a pain to get to compile prop
 
 ## Downloading the models
 ### Models to clone
-- [GPT 3.5 & 4](https://need-to-put-a-link-here)
+- [GPT 3.5 & 4](https://platform.openai.com/api-keys)
 - [LLAMA 7B, 13B & 70B](https://github.com/facebookresearch/llama)
 - [Wizard Mega 13B](https://huggingface.co/openaccess-ai-collective/wizard-mega-13b)
 - [Orca 2 7B](https://huggingface.co/microsoft/Orca-2-7b)
