@@ -36,7 +36,12 @@ public class GPTResponseGenerator implements ResponseGenerator {
     private final String MODEL;
 
     private final AISettings SETTINGS = new AISettings()
-            .addDouble("Temperature", 1, 0d, 2d, 0.1);
+            .addDouble("Temperature", 1, 0d, 2d, 0.1)
+            .addInteger("Max Tokens", 256, 1, 4096)
+            .addDouble("Top P", 1, 0d, 1d, 0.1)
+            .addDouble("Frequency Penalty", 0, 0d, 1d, 0.1)
+            .addDouble("Presence Penalty", 0, 0d, 1d, 0.1)
+            ;
 
     static {
         File apiKeyFile = new File("llama.cpp/models/GPT/api_key.txt");
@@ -66,6 +71,12 @@ public class GPTResponseGenerator implements ResponseGenerator {
     @Override
     public void generateResponse(String product1, String product2, AsyncCallback<String> callback) {
 
+        final double temperature = (double) SETTINGS.getSettingByName("Temperature").getValue();
+        final int maxTokens = (int) SETTINGS.getSettingByName("Max Tokens").getValue();
+        final double topP = (double) SETTINGS.getSettingByName("Top P").getValue();
+        final double frequencyPenalty = (double) SETTINGS.getSettingByName("Frequency Penalty").getValue();
+        final double presencePenalty = (double) SETTINGS.getSettingByName("Presence Penalty").getValue();
+
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(50, TimeUnit.SECONDS)
@@ -77,13 +88,21 @@ public class GPTResponseGenerator implements ResponseGenerator {
 
         JsonObject json = new JsonObject();
         json.addProperty("model", MODEL);
+        json.addProperty("temperature", temperature);
+        if(maxTokens != -1) {
+            json.addProperty("max_tokens", maxTokens);
+        }
+        json.addProperty("top_p", topP);
+        json.addProperty("frequency_penalty", frequencyPenalty);
+        json.addProperty("presence_penalty", presencePenalty);
+
 
         JsonArray jsonArray = new JsonArray();
         JsonObject inside = new JsonObject();
         inside.addProperty("role", "user");
 
         String prompt = PROMPT.replace("%product1%", product1).replace("%product2%", product2);
-        System.out.println(prompt);
+//        System.out.println(prompt);
 
         inside.addProperty("content", prompt);
         jsonArray.add(inside);
