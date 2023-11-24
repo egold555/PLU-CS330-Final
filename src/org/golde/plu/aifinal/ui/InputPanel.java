@@ -29,7 +29,6 @@ public class InputPanel extends JPanel {
         setLayout(new BorderLayout());
 
         productIdInput = new JTextField();
-        new GhostText(productIdInput, "Enter a product ID");
         searchButton = new JButton("Search");
 
         searchButton.addActionListener(e -> {
