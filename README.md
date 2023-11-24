@@ -24,6 +24,7 @@
     - [Wizard 13B](#wizard-13b)
     - [Orca 2 7B](#orca-2-7b)
     - [Orca 2 13B](#orca-2-13b)
+    - [What I learned](#what-i-learned)
   - [Basic Troubleshooting](#basic-troubleshooting)
 
 ## Team Members
@@ -99,26 +100,39 @@ In windows terminal
 Now you can delete all the files in the models folder except for the q4_0 model
 
 ## Results & Summary
+
 ### GPT 3.5 Turbo
 GPT 3.5 Turbo worked very well at this task. It was able to give very detailed answers, and was very good at staying on topic.
 
 This was the fastest model to run.
+
 ### GPT 4
 GPT 4 worked very well at this task. It was able to give very detailed answers, and was very good at staying on topic, but it was sometimes overly verbose in its descriptions.
 
 It was also slow, but not as slow as the local models.
+
 ### LLAMA 7B
 LLAMA 7B did not work well at all. It either would make things up, or just talk about random facts and ignore any user input.
+
 ### LLAMA 13B
 LLAMA 13B did not work well at all. It either would make things up, or just talk about random facts and ignore any user input. I did not see a difference between LLAMA 13B and LLAMA 7B.
+
 ### Wizard 13B
 Wizard 13B worked very well at this task. It was able to give very detailed answers, and was very good at staying on topic.
+
 ### Orca 2 7B
 Orca 2 7B worked very well at this task. It was able to give very detailed answers, and was very good at staying on topic.
 
 Orca 2 was the fastest local model to run.
+
 ### Orca 2 13B
 Orca 2 13B worked very well at this task. It was able to give very detailed answers, and was very good at staying on topic. I can't tell the difference between Orca 2 7B and Orca 2 13B.
+
+### What I learned
+- GPT 3.5 Turbo is the best and fastest model for this task
+- Orca 2 is the best local model for this task
+- Every LLAMA model is bad at this task
+- **This is not a very simple task for a AI to accomplish, dispite being a simple task on paper.**
 
 
 ## Basic Troubleshooting
