@@ -24,6 +24,7 @@
     - [Wizard 13B](#wizard-13b)
     - [Orca 2 7B](#orca-2-7b)
     - [Orca 2 13B](#orca-2-13b)
+    - [Openhermes 2.5 mistral 7B](#openhermes-25-mistral-7b)
     - [What I learned](#what-i-learned)
   - [Basic Troubleshooting](#basic-troubleshooting)
 
@@ -41,6 +42,7 @@ This project takes a lot of disk space, and can be a pain to get to compile prop
 | Wizard 13B    | [![Wizard 13b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FWrUIHKu7LLc)](https://youtu.be/WrUIHKu7LLc) |
 | Orca 2 7B     | [![Orca 2 7b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FcCSpiXtpkEE)](https://youtu.be/cCSpiXtpkEE)  |
 | Orca 2 13B    | [![Orca 2 13b Example](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FFvGlrgcHDdA)](https://youtu.be/FvGlrgcHDdA) |
+| Openhermes 2.5 mistral 7b   | [![Openhermes 2.5 mistral 7b](https://markdown-videos-api.jorgenkh.no/url?url=TBA)](TBA) |
 
 
 ## Installing & Running
@@ -74,6 +76,7 @@ This project takes a lot of disk space, and can be a pain to get to compile prop
 - [Wizard Mega 13B](https://huggingface.co/openaccess-ai-collective/wizard-mega-13b)
 - [Orca 2 7B](https://huggingface.co/microsoft/Orca-2-7b)
 - [Orca 2 13B](https://huggingface.co/microsoft/Orca-2-13b)
+- [Openhermes 2.5 mistral 7b](https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B)
 
 ### Downloading
 In git terminal
@@ -127,6 +130,9 @@ Orca 2 was the fastest local model to run.
 
 ### Orca 2 13B
 Orca 2 13B worked very well at this task. It was able to give very detailed answers, and was very good at staying on topic. I can't tell the difference between Orca 2 7B and Orca 2 13B.
+
+### Openhermes 2.5 mistral 7B
+This model worked, but it did not give bullet points and a summary. It just gave a summary of both products which is not exactly what it was asked to do. Other than that it worked well.
 
 ### What I learned
 - GPT 3.5 Turbo is the best and fastest model for this task

@@ -16,9 +16,9 @@ public enum EnumResponseType {
     LLAMA_13("LLaMA 13B", new LLamaCPPResponseGenerator("llama-2-13b")),
     LLAMA_70("LLaMA 70B", new LLamaCPPResponseGenerator("llama-2-70b")),
     WIZARD_MEGA_13B("Wizard Mega 13B", new LLamaCPPResponseGenerator("wizard-mega-13b")),
-
     ORCA_7B("ORCA 7B", new LLamaCPPResponseGenerator("orca-2-7b")),
     ORCA_13B("ORCA 13B", new LLamaCPPResponseGenerator("orca-2-13b")),
+    OPEN_HERMES_7B("Open Hermes 2.5 7B", new LLamaCPPResponseGenerator("openhermes-2.5-mistral-7b")),
     ;
 
     private final String niceName;
