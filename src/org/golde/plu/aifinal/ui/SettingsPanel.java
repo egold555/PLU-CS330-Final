@@ -224,7 +224,7 @@ public class SettingsPanel extends JPanel {
                 final int defaultValueInSteps = (int)((value - min) / increment);
 
                 final int step = amountOfSteps / 10;
-                
+
                 for(int i = 0; i <= amountOfSteps; i+=step) {
                     JLabel label = new JLabel(f.format(i*increment));
                     label.setFont(label.getFont().deriveFont(Font.PLAIN));
