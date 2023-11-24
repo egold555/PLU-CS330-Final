@@ -1,5 +1,10 @@
 # CS330 Homedepot AI Final Project
+
+I worked as an assosiate at Home Depot for the summer, and I it challenging that customers wanted to know the difference between two products. While we have signage, it isn't specific enough. I found that I needed to read the descriptions of both products, compare and summarize them for the customers. This program is designed to help with that task, and make my job more efficient, and better for the customer.
+
 This program uses a variety of AI models to compare two products on homedepot.com. It then gives a summary of the products. It has options to use a variety of models, and to change the settings of each model.
+
+If I were to continue this project, I would add caching to the program, so two products that have already been compared would not need to be compared again. I would also add a way to compare more than two products at once. I would also create a frontend app for the phone, and make the backend a server, so that it could be used by other employees.
 
 **:warning: This project is only built for Windows, and will not run on other platforms!**
 
@@ -102,6 +107,11 @@ In windows terminal
 Now you can delete all the files in the models folder except for the q4_0 model
 
 ## Results & Summary
+For my testing, I compared the products [317061072](https://homedepot.com/s/317061072) and [314600837](https://homedepot.com/s/314600837). I chose these two products because they are similier lawn mowers by the same manufacturer. This is a very real world example of what I was asked by customers as an assosiate to compare.
+
+I evaluated the speed and quality of the results for each model. Quality is subjective by how correct it was, and how useful I felt the results were.
+
+Each models settings are the defaults in the program.
 
 ### GPT 3.5 Turbo
 GPT 3.5 Turbo worked very well at this task. It was able to give very detailed answers, and was very good at staying on topic.
@@ -128,7 +138,7 @@ Orca 2 7B worked very well at this task. It was able to give very detailed answe
 Orca 2 was the fastest local model to run.
 
 ### Orca 2 13B
-Orca 2 13B worked very well at this task. It was able to give very detailed answers, and was very good at staying on topic. I can't tell the difference between Orca 2 7B and Orca 2 13B.
+Orca 2 13B worked very well at this task. It was able to give very detailed answers, and was very good at staying on topic. I can't tell the difference between Orca 2 7B and Orca 2 13B besides 13B being slower.
 
 ### Openhermes 2.5 mistral 7B
 This model worked, but it did not give bullet points and a summary. It just gave a summary of both products which is not exactly what it was asked to do. Other than that it worked well.
@@ -137,7 +147,7 @@ This model worked, but it did not give bullet points and a summary. It just gave
 - GPT 3.5 Turbo is the best and fastest model for this task
 - Orca 2 is the best local model for this task
 - Every LLAMA model is bad at this task
-- **This is not a very simple task for a AI to accomplish, dispite being a simple task on paper.**
+- **This is not a very simple task for a AI to accomplish, despite being a simple task on paper.**
 
 
 ## Basic Troubleshooting
