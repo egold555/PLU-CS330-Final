@@ -52,12 +52,14 @@ public class LLamaCPPResponseGenerator implements ResponseGenerator {
     private final AISettings SETTINGS = new AISettings()
             .addInteger("Max Words (N)", -1)
             .addDouble("Repeat Penalty", 1.0, 0.0, 5.0, 0.1)
-            .addDouble("Temperature", 0.7, 0.0, 5.0, 0.1)
-            .addInteger("Gpu Layers", 43)
-            .addInteger("mirostat", 1)
-            .addInteger("mirostat-ent", 4)
-            .addDouble("mirostat-lr", 0.2, 0.0, 5.0, 0.1)
-            .addInteger("repeat-last-n", 1600)
+            .addDouble("Temperature", 0.8, 0.0, 5.0, 0.1)
+            .addBoolean("GPU", true)
+            .addInteger("Threads", 6)
+            .addInteger("Seed", -1)
+            .addInteger("top-k", 40)
+            .addDouble("top-p", 0.9, 0.0, 1.0, 0.1)
+            .addDouble("min-p", 0.1, 0.0, 1.0, 0.1)
+            .addInteger("repeat-last-n", 64)
             ;
 
     private Process llamaCPP;
@@ -72,6 +74,17 @@ public class LLamaCPPResponseGenerator implements ResponseGenerator {
 
         try {
 
+            final int maxWords = (int) SETTINGS.getSettingByName("Max Words (N)").getValue();
+            final int GPU = (boolean) SETTINGS.getSettingByName("GPU").getValue() ? 100 : 0;
+            final double repeatPenalty = (double) SETTINGS.getSettingByName("Repeat Penalty").getValue();
+            final double temperature = (double) SETTINGS.getSettingByName("Temperature").getValue();
+            final int repeatLastN = (int) SETTINGS.getSettingByName("repeat-last-n").getValue();
+            final int threads = (int) SETTINGS.getSettingByName("Threads").getValue();
+            final int seed = (int) SETTINGS.getSettingByName("Seed").getValue();
+            final int topK = (int) SETTINGS.getSettingByName("top-k").getValue();
+            final double topP = (double) SETTINGS.getSettingByName("top-p").getValue();
+            final double minP = (double) SETTINGS.getSettingByName("min-p").getValue();
+
             //Write the prompt to a file
             String prompt = THE_PROMPT.replace("%product1%", product1).replace("%product2%", product2);
             PrintWriter pw = new PrintWriter(TMP_FILE);
@@ -82,8 +95,19 @@ public class LLamaCPPResponseGenerator implements ResponseGenerator {
             //main.exe -m ../llama.cpp/models/wizard-mega-13b/ggml-model-q4_0.gguf -n -1 -c 4096 --repeat_penalty 1.0 --gpu-layers 100 --color -f ../llama.cpp/prompts/eg-hd-4.txt
 
             String cmd = EXE_LOCATION +
-                    " -m \"" + MODEL_LOCATION + "/" + MODEL_NAME + "/" + MODEL_FILE_NAME + "\" " +
-                    "-n -1 -c 4096 --repeat_penalty 1.0 --gpu-layers 100 --color -f \"" + TMP_FILE.getAbsolutePath() + "\""
+                    " -m \"" + MODEL_LOCATION + "/" + MODEL_NAME + "/" + MODEL_FILE_NAME + "\" " + //MODEL
+                    "-n " + maxWords + " " + //MAX WORDS
+                    "--gpu-layers " + GPU + " " + //GPU
+                    "-c 4096" + " " + //CTX SIZE
+                    "--repeat_penalty " + repeatPenalty + " " +
+                    "--repeat-last-n " + repeatLastN + " " +
+                    "-t " + threads + " " + //THREADS
+                    "--temp " + temperature + " " + //TEMPERATURE
+                    "-s " + seed + " " + //SEED
+                    "--top-k " + topK + " " + //TOP K
+                    "--top-p " + topP + " " + //TOP P
+                    "--min-p " + minP + " " + //MIN P
+                    "-f \"" + TMP_FILE.getAbsolutePath() + "\"" //PROMPT FILE
                     ;
 
             ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "\"" + cmd + "\"");
