@@ -1,6 +1,5 @@
 package org.golde.plu.aifinal.ui;
 
-import com.google.gson.JsonObject;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -22,7 +21,6 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import org.golde.plu.aifinal.ai.AISettings.Setting;
 import org.golde.plu.aifinal.ai.EnumResponseType;
-import org.golde.plu.aifinal.ai.ResponseGenerator;
 import org.golde.plu.aifinal.ai.ResponseGenerator.AsyncCallback;
 
 public class SettingsPanel extends JPanel {

@@ -1,6 +1,5 @@
 package org.golde.plu.aifinal.ai.models;
 
-import com.google.gson.JsonObject;
 import lombok.AllArgsConstructor;
 import org.golde.plu.aifinal.ai.ResponseGenerator;
 

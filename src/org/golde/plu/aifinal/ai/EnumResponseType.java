@@ -1,15 +1,11 @@
 package org.golde.plu.aifinal.ai;
 
 import org.golde.plu.aifinal.ai.models.NotImplementedResponseGenerator;
-import org.golde.plu.aifinal.ai.models.dummy.DummyResponseGenerator;
-import org.golde.plu.aifinal.ai.models.dummy.DummyResponseGenerator2;
 import org.golde.plu.aifinal.ai.models.gpt.GPTResponseGenerator;
 import org.golde.plu.aifinal.ai.models.llama.LLamaCPPResponseGenerator;
 
 public enum EnumResponseType {
 
-    //DUMMY("Dummy", new DummyResponseGenerator()),
-    //DUMMY2("Dummy 2", new DummyResponseGenerator2()),
     GPT3_5("GPT 3.5", new GPTResponseGenerator(GPTResponseGenerator.MODEL_3_5)),
     GPT4("GPT 4", new GPTResponseGenerator(GPTResponseGenerator.MODEL_4_0)),
     LLAMA_7("LLaMA 7B", new LLamaCPPResponseGenerator("llama-2-7b")),

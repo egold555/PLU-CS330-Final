@@ -3,14 +3,11 @@ package org.golde.plu.aifinal.ui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.io.BufferedOutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
-import javax.swing.SizeRequirements;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BoxView;
@@ -24,9 +21,6 @@ import javax.swing.text.StyleContext;
 import javax.swing.text.StyledEditorKit;
 import javax.swing.text.View;
 import javax.swing.text.ViewFactory;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.HTMLEditorKit.HTMLFactory;
-import javax.swing.text.html.InlineView;
 import javax.swing.text.html.ParagraphView;
 
 public class OutputPanel extends JPanel {

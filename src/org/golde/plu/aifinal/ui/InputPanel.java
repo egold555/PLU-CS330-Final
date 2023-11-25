@@ -10,7 +10,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import lombok.Getter;
 import org.golde.plu.aifinal.homedepot.HomedepotAPIWrapper;
 import org.golde.plu.aifinal.homedepot.Product;
 import org.golde.plu.aifinal.homedepot.ProductLookupException;
