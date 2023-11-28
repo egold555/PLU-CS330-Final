@@ -32,6 +32,8 @@ If I were to continue this project, I would add caching to the program, so two p
     - [Openhermes 2.5 mistral 7B](#openhermes-25-mistral-7b)
     - [What I learned](#what-i-learned)
   - [Basic Troubleshooting](#basic-troubleshooting)
+  - [Contributing](#contributing)
+    - [Don't accidently commit your GPT API key!](#dont-accidently-commit-your-gpt-api-key)
 
 ## Team Members
 - Eric Golde
@@ -154,3 +156,13 @@ This model worked, but it did not give bullet points and a summary. It just gave
 - If the program crashes or hangs, you may need to kill the process `main.exe` in task manager.
 - If llama.cpp fails to run, try running it outside of IntelliJ with the command `main.exe` in the `llama.cpp` folder.
 - If the model fails to convert to fp16 due to a token error, try editing the model settings in the models json file, to specify the correct tokens.
+
+
+## Contributing
+### Don't accidently commit your GPT API key!
+I already accidentally did that once, and had to reset it.
+
+If you don't want to accidentally commit your API key, you can ignore any changes to the `models/GPT/api_key.txt` file by running the command `git update-index --assume-unchanged models/GPT/api_key.txt` in git bash.
+
+If you do commit it, you can reset it at [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys).
+
