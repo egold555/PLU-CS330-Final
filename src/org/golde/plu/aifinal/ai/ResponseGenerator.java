@@ -1,5 +1,8 @@
 package org.golde.plu.aifinal.ai;
 
+/**
+ * Represents an AI that can generate a response to a prompt.
+ */
 public interface ResponseGenerator {
 
         void generateResponse(String product1, String product2, AsyncCallback<String> callback);

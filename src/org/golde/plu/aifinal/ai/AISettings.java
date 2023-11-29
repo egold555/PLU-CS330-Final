@@ -13,6 +13,9 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * A class to store settings for an AI.
+ */
 public class AISettings {
 
     private List<Setting> settings = new ArrayList<>();

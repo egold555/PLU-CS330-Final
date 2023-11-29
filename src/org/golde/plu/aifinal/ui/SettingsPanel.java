@@ -23,18 +23,21 @@ import org.golde.plu.aifinal.ai.AISettings.Setting;
 import org.golde.plu.aifinal.ai.EnumResponseType;
 import org.golde.plu.aifinal.ai.ResponseGenerator.AsyncCallback;
 
+/**
+ * This class is a JPanel that contains all the settings for the AI.
+ *
+ * It also does the bulk of the logic work for the UI.
+ */
 public class SettingsPanel extends JPanel {
 
     private EnumResponseType RESPONSE_GENERATOR = EnumResponseType.GPT3_5;
-    private final TestUI parent;
+    private final ProjectUI parent;
 
-    public SettingsPanel(TestUI parent) {
+    public SettingsPanel(ProjectUI parent) {
         this.parent = parent;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         resetPanel();
     }
-
-
 
     private void resetPanel() {
         this.removeAll();
@@ -301,10 +304,6 @@ public class SettingsPanel extends JPanel {
         });
         RESPONSE_GENERATOR = type;
         resetPanel();
-    }
-
-    public EnumResponseType getAIResponseGenerator() {
-        return RESPONSE_GENERATOR;
     }
 
     private JPanel createRow(String name, JComponent component) {

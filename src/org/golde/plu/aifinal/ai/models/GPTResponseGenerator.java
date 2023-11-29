@@ -1,4 +1,4 @@
-package org.golde.plu.aifinal.ai.models.gpt;
+package org.golde.plu.aifinal.ai.models;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -18,6 +18,9 @@ import okhttp3.Response;
 import org.golde.plu.aifinal.ai.AISettings;
 import org.golde.plu.aifinal.ai.ResponseGenerator;
 
+/**
+ * This response generator uses the GPT-3.5 and GPT-4 API to generate responses.
+ */
 public class GPTResponseGenerator implements ResponseGenerator {
 
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
@@ -43,6 +46,7 @@ public class GPTResponseGenerator implements ResponseGenerator {
             .addDouble("Presence Penalty", 0, 0d, 1d, 0.1)
             ;
 
+    // Load the API Key from the file.
     static {
         File apiKeyFile = new File("llama.cpp/models/GPT/api_key.txt");
         if(apiKeyFile.exists()) {

@@ -1,4 +1,4 @@
-package org.golde.plu.aifinal.ai.models.llama;
+package org.golde.plu.aifinal.ai.models;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,6 +8,9 @@ import javax.swing.SwingUtilities;
 import org.golde.plu.aifinal.ai.AISettings;
 import org.golde.plu.aifinal.ai.ResponseGenerator;
 
+/**
+ * This is the response generator for the LLaMa C++ program.
+ */
 public class LLamaCPPResponseGenerator implements ResponseGenerator {
 
     private static final String EXE_LOCATION;
@@ -34,15 +37,16 @@ public class LLamaCPPResponseGenerator implements ResponseGenerator {
 
             ;
 
+    //Populate the EXE location
     static {
         final String dir = System.getProperty("user.dir");
-        System.out.println("current dir = " + dir);
+        //System.out.println("current dir = " + dir);
         EXE_LOCATION = "\"" + dir + "\\llama.cpp\\main.exe\"";
 
         MODEL_LOCATION = new File(dir, "llama.cpp\\models");
 
-        System.out.println("EXE_LOCATION = " + EXE_LOCATION);
-        System.out.println("MODEL_LOCATION = " + MODEL_LOCATION.getAbsolutePath());
+        //System.out.println("EXE_LOCATION = " + EXE_LOCATION);
+        //System.out.println("MODEL_LOCATION = " + MODEL_LOCATION.getAbsolutePath());
     }
 
     private final File TMP_FILE = new File("tmp/llama_prompt.txt");
@@ -190,7 +194,6 @@ public class LLamaCPPResponseGenerator implements ResponseGenerator {
     @Override
     public AISettings getSettings() {
         return SETTINGS;
-       // return new AISettings().addBoolean("NOT IMPLEMENTED", true);
     }
 
 }

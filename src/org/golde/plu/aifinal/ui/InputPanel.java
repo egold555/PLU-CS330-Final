@@ -14,6 +14,9 @@ import org.golde.plu.aifinal.homedepot.HomedepotAPIWrapper;
 import org.golde.plu.aifinal.homedepot.Product;
 import org.golde.plu.aifinal.homedepot.ProductLookupException;
 
+/**
+ * Product input panel.
+ */
 public class InputPanel extends JPanel {
 
     private ImagePanel imageLabel;

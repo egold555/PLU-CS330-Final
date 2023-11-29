@@ -8,7 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import lombok.Getter;
 
-public class TestUI {
+/**
+ * This class is the main UI for the project. It creates the JFrame and adds all the sub-panels to it.
+ */
+public class ProjectUI {
 
     @Getter
     private InputPanel product1Panel;
@@ -44,13 +47,6 @@ public class TestUI {
         mainPanel.add(product1Panel);
         mainPanel.add(product2Panel);
         mainPanel.add(new JScrollPane(settingsPanel));
-
-//        JScrollPane outputScrollPane = new JScrollPane(outputPanel);
-//        outputScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-//        outputScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-//
-//        //outputScrollPane.getVerticalScrollBar().addAdjustmentListener(e -> e.getAdjustable().setValue(e.getAdjustable().getMaximum()));
-//        mainPanel.add(outputScrollPane);
         mainPanel.add(outputPanel);
 
         // Add the main panel to the frame

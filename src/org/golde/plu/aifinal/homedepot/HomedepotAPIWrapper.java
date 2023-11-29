@@ -12,6 +12,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/**
+ * API Wrapper for Home Depot's un-official GraphQL API.
+ */
 public class HomedepotAPIWrapper {
 
     public static final Gson GSON = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();

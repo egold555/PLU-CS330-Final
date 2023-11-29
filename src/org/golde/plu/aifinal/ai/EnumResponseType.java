@@ -1,9 +1,12 @@
 package org.golde.plu.aifinal.ai;
 
 import org.golde.plu.aifinal.ai.models.NotImplementedResponseGenerator;
-import org.golde.plu.aifinal.ai.models.gpt.GPTResponseGenerator;
-import org.golde.plu.aifinal.ai.models.llama.LLamaCPPResponseGenerator;
+import org.golde.plu.aifinal.ai.models.GPTResponseGenerator;
+import org.golde.plu.aifinal.ai.models.LLamaCPPResponseGenerator;
 
+/**
+ * An enum that contains a single instance of each ResponseGenerator.
+ */
 public enum EnumResponseType {
 
     GPT3_5("GPT 3.5", new GPTResponseGenerator(GPTResponseGenerator.MODEL_3_5)),

@@ -10,6 +10,9 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import lombok.Setter;
 
+/**
+ * A JPanel that displays an image centered and scaled to fit.
+ */
 public class ImagePanel extends JPanel {
 
     @Setter private BufferedImage img;

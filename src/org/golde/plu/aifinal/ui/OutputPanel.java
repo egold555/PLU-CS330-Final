@@ -23,6 +23,9 @@ import javax.swing.text.View;
 import javax.swing.text.ViewFactory;
 import javax.swing.text.html.ParagraphView;
 
+/**
+ * Panel that displays the output of the program.
+ */
 public class OutputPanel extends JPanel {
 
     private final JTextPane output;
@@ -87,14 +90,6 @@ public class OutputPanel extends JPanel {
 
     public void printError(String error) {
         println("<span style=\"color: red;\">" + error + "</span>");
-    }
-
-    // Custom EditorKit to enable word wrap in JTextPane
-    static class WrapEditorKit extends StyledEditorKit {
-        @Override
-        public ViewFactory getViewFactory() {
-            return new WrapColumnFactory();
-        }
     }
 
     static class WrapColumnFactory implements ViewFactory {

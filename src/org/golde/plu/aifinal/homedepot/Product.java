@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * Represents a product from Home Depot.
+ */
 @AllArgsConstructor
 @Getter
 @ToString
