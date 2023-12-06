@@ -92,27 +92,6 @@ public class OutputPanel extends JPanel {
         println("<span style=\"color: red;\">" + error + "</span>");
     }
 
-    static class WrapColumnFactory implements ViewFactory {
-        public View create(Element elem) {
-            String kind = elem.getName();
-            if (kind != null) {
-                switch (kind) {
-                    case AbstractDocument.ContentElementName:
-                        return new LabelView(elem);
-                    case AbstractDocument.ParagraphElementName:
-                        return new WrapParagraphView(elem);
-                    case AbstractDocument.SectionElementName:
-                        return new BoxView(elem, View.Y_AXIS);
-                    case StyleConstants.ComponentElementName:
-                        return new ComponentView(elem);
-                    case StyleConstants.IconElementName:
-                        return new IconView(elem);
-                }
-            }
-            return new LabelView(elem);
-        }
-    }
-
     static class WrapParagraphView extends ParagraphView {
         public WrapParagraphView(Element elem) {
             super(elem);
