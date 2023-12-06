@@ -31,6 +31,7 @@ If I were to continue this project, I would add caching to the program, so two p
     - [Orca 2 13B](#orca-2-13b)
     - [Openhermes 2.5 mistral 7B](#openhermes-25-mistral-7b)
     - [What I learned](#what-i-learned)
+    - [In class presentation](#in-class-presentation)
   - [Basic Troubleshooting](#basic-troubleshooting)
   - [Contributing](#contributing)
     - [Don't accidently commit your GPT API key!](#dont-accidently-commit-your-gpt-api-key)
@@ -151,6 +152,11 @@ This model worked, but it did not give bullet points and a summary. It just gave
 - Every LLAMA model is bad at this task
 - **This is not a very simple task for a AI to accomplish, despite being a simple task on paper.**
 
+### In class presentation
+You can find the presentation I gave in class below:
+* [Powerpoint](./Github%20Resources/EG%20Ai%20Final%20Presentation.pptx)
+* [PDF](./Github%20Resources/EG%20Ai%20Final%20Presentation.pdf)
+
 
 ## Basic Troubleshooting
 - If the program crashes or hangs, you may need to kill the process `main.exe` in task manager.
@@ -165,4 +171,3 @@ I already accidentally did that once, and had to reset it.
 If you don't want to accidentally commit your API key, you can ignore any changes to the `models/GPT/api_key.txt` file by running the command `git update-index --assume-unchanged models/GPT/api_key.txt` in git bash.
 
 If you do commit it, you can reset it at [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys).
-
